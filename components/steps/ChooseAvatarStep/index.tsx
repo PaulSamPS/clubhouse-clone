@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { FC, useRef } from 'react'
 import clsx from 'clsx'
 import { WhiteBlock } from '../../WhiteBlock'
 import { Button } from '../../Button'
@@ -7,8 +7,8 @@ import { StepInfo } from '../../StepInfo'
 import styles from './ChooseAvatarStep.module.scss'
 import { Avatar } from '../../Avatar';
 
-export const ChooseAvatarStep = () => {
-    const inputFileRef = useRef()
+export const ChooseAvatarStep: FC = () => {
+    const inputFileRef = useRef<HTMLInputElement>(null)
 
     const handleChangeImage = (e) => {
         console.log (e.target.files)
