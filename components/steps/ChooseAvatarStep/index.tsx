@@ -1,17 +1,24 @@
-import React, { FC, useRef } from 'react'
-import clsx from 'clsx'
+import React, { FC, useContext, useRef, useState } from 'react'
 import { WhiteBlock } from '../../WhiteBlock'
 import { Button } from '../../Button'
 import { StepInfo } from '../../StepInfo'
+import { Avatar } from '../../Avatar'
+import {MainContext} from '../../../pages'
+import clsx from 'clsx'
 
 import styles from './ChooseAvatarStep.module.scss'
-import { Avatar } from '../../Avatar';
 
 export const ChooseAvatarStep: FC = () => {
+    const { onNextStep } = useContext(MainContext)
+    const [avatarUrl, setAvatarUrl] = useState<string>('static/avatar.svg')
     const inputFileRef = useRef<HTMLInputElement>(null)
 
-    const handleChangeImage = (e) => {
-        console.log (e.target.files)
+    const handleChangeImage = (event: Event): void => {
+        const file = (event.target as HTMLInputElement).files[0]
+        if (file) {
+            const imageUrl = URL.createObjectURL(file)
+            setAvatarUrl(imageUrl)
+        }
     }
 
   React.useEffect(() => {
@@ -24,7 +31,7 @@ export const ChooseAvatarStep: FC = () => {
     <div className={styles.block}>
       <StepInfo
         icon="/static/celebration.png"
-        title="Okay, Archakov Dennis!"
+        title="Okay, Samoylenko Pavel!"
         description="How’s this photo?"
       />
       <WhiteBlock className={clsx('m-auto mt-40', styles.whiteBlock)}>
@@ -32,7 +39,7 @@ export const ChooseAvatarStep: FC = () => {
             <Avatar
                 width='120px'
                 height='120px'
-                src='https://avatars.mds.yandex.net/get-zen_doc/128694/pub_5bea960535713d00aa21d53c_5bea982d42be8000aacd9722/scale_1200'
+                src={ avatarUrl }
             />
         </div>
         <div className="mb-30">
@@ -41,11 +48,11 @@ export const ChooseAvatarStep: FC = () => {
           </label>
         </div>
         <input id="image" ref={ inputFileRef } type="file" hidden />
-        <Button>
+        <Button onClick={ onNextStep }>
           Next
-          <img className="d-ib ml-10" src="/static/arrow.svg" />
+          <img className="d-ib ml-10" src="/static/arrow.svg"  alt='arrow'/>
         </Button>
       </WhiteBlock>
     </div>
-  );
-};
+  )
+}

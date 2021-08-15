@@ -1,12 +1,13 @@
-import Link from 'next/link'
+import { Header } from '../components/Header'
 
 const RoomsPages = () => {
     return (
-        <Link href="/">
-            <a>
-                <h1>Go to Home</h1>
-            </a>
-        </Link>
+        <>
+            <Header />
+            <div className='container'>
+                <h1>Rooms Page</h1>
+            </div>
+        </>
     )
 }
 

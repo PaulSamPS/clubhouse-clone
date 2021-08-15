@@ -1,19 +1,26 @@
-import React, { useState } from 'react'
+import React, {useContext, useState} from 'react'
+import { WhiteBlock } from '../../WhiteBlock'
+import { Button } from '../../Button'
+import { StepInfo } from '../../StepInfo'
+import { MainContext } from '../../../pages'
 import clsx from 'clsx'
 import NumberFormat from 'react-number-format'
-import { WhiteBlock } from '../../WhiteBlock'
-import { Button } from '../../Button';
-import { StepInfo } from '../../StepInfo'
 
 import styles from './EnterPhoneStep.module.scss'
 
-export const EnterPhoneStep = () => {
-  const [inputValue, setInputValue] = useState({});
+type InputValueState = {
+  formattedValue: string
+  value: string
+}
 
-  const nextDisabled = !inputValue.formattedValue || inputValue.formattedValue.includes('_')
+export const EnterPhoneStep = () => {
+  const { onNextStep } = useContext(MainContext)
+  const [values, setValues] = useState<InputValueState>({} as InputValueState)
+
+  const nextDisabled = !values.formattedValue || values.formattedValue.includes('_')
 
   return (
-    <div className={clsx(styles.block, 'ttt')}>
+    <div className={styles.block}>
       <StepInfo
         icon="/static/phone.png"
         title="Enter your phone #"
@@ -26,12 +33,12 @@ export const EnterPhoneStep = () => {
             className="field"
             format="+# (###) ###-##-##"
             mask="_"
-            placeholder="+7 (999) 333-22-11"
-            value={inputValue.value}
-            onValueChange={(values) => setInputValue(values)}
+            placeholder="+7 (123) 456-78-90"
+            value={ values.value }
+            onValueChange={({ formattedValue, value }) => setValues({ formattedValue, value })}
           />
         </div>
-        <Button disabled={nextDisabled}>
+        <Button disabled={nextDisabled} onClick={ onNextStep }>
           Next
           <img className="d-ib ml-10" src="/static/arrow.svg" />
         </Button>
