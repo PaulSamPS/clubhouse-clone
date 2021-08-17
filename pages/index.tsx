@@ -36,5 +36,3 @@ export default function Home() {
         </MainContext.Provider>
     )
 }
-
-// 1:46 2 lesson
