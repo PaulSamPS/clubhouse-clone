@@ -21,7 +21,7 @@ export const Avatar: FC<AvatarProps> = ({
   return (
     <div
       style={{ width, height, backgroundImage: src ? `url(${src})` : '' }}
-      className={clsx(styles.avatar, isVoice ? styles.avatarBorder : '', className, 'd-ib')}
+      className={ clsx(styles.avatar, isVoice ? styles.avatarBorder : '', className, 'd-ib') }
     >
     </div>
   )

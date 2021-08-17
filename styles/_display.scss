@@ -18,6 +18,10 @@
   justify-content: center;
 }
 
+.justify-space-around {
+  justify-content: space-around;
+}
+
 .align-items-center {
   align-items: center;
 }
@@ -44,4 +48,10 @@
 
 .cup {
   cursor: pointer;
+}
+
+.media {
+  @media screen and (max-width: 460px) {
+    flex-direction: column;
+  }
 }

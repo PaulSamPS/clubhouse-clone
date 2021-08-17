@@ -9,12 +9,12 @@ const ProfilePage = () => {
     return (
         <>
             <Header />
-            <div className='pt-10 pl-10 pb-10 pr-10 mt-30 container'>
+            <div className='mt-20 container'>
                 <Profile
                     fullname='Jack Sparrow'
                     username='Jack'
                     avatarUrl='https://animator36.ru/wp-content/uploads/2021/01/captain-jack-vorobey.jpg'
-                    about='captain Jack Sparrow join to clubhouse.' />
+                    about='Captain Jack Sparrow &copy; Pirates of the Caribbean.' />
             </div>
         </>
     )

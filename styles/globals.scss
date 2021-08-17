@@ -33,6 +33,13 @@ a {
 .container {
   margin: 0 auto;
   max-width: 990px;
+  padding: 0 10px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .field {
@@ -48,8 +55,13 @@ a {
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
   gap: 30px;
+  @media screen and (max-width:989px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }
 
 .loader {

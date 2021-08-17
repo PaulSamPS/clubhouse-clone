@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import React, { FC } from 'react'
+import clsx from 'clsx'
 
 import styles from './Button.module.scss'
 
@@ -27,7 +27,7 @@ export const Button: FC<ButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      type="button"
+      type='button'
       className={clsx(className, styles.button, colors[color])}
       disabled={disabled}>
       {children}
