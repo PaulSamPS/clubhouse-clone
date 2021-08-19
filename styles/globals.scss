@@ -32,14 +32,43 @@ a {
 
 .container {
   margin: 0 auto;
-  max-width: 990px;
+  max-width: 1240px;
   padding: 0 10px;
+}
+
+.content {
+  min-height: calc(100vh - 161px);
 }
 
 .cards {
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wrapper-cards {
+  margin: 8.3px;
+
+  @media screen and (max-width:320px) {
+    margin: 10px 0 0 0;
+  }
+
+  @media screen and (max-width:375px) {
+    margin: 10px 0 0 0;
+  }
+
+  @media screen and (max-width:414px) {
+    margin: 10px 0 0 0;
+  }
+
+  @media screen and (max-width:540px) {
+    margin: 10px 0 0 0;
+  }
+}
+
+.title-size {
+  margin: 0;
 }
 
 .field {

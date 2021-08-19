@@ -1,36 +1,39 @@
 .card {
   padding: 30px 35px !important;
   min-height: 170px !important;
-  width: 470px !important;
+  width: 390px !important;
   box-sizing: border-box !important;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   text-align: center;
-  //
-  //@media screen and (min-width:990px) {
-  //  max-width: 460px !important;
+
+  //@media screen and (max-width:1024px) {
+  //  width: 490px !important;
   //}
   //
-  @media screen and (max-width:990px) {
-    width: 420px !important;
-  }
-  //
-  //@media screen and (max-width:910px) {
-  //  max-width: 380px !important;
+  //@media screen and (max-width:768px) {
+  //  width: 365px !important;
   //}
-  //
-  @media screen and (max-width:415px) {
-    width: 380px !important;
-  }
+  //@media screen and (max-width:414px) {
+  //  width: 390px !important;
+  //}
   @media screen and (max-width:375px) {
     width: 350px !important;
   }
-  @media screen and (max-width:374px) {
+
+  @media screen and (max-width:360px) {
     width: 340px !important;
   }
-  @media screen and (max-width:373px) {
+
+  @media screen and (max-width:320px) {
     width: 300px !important;
   }
+  //@media screen and (max-width:374px) {
+  //  width: 340px !important;
+  //}
+  //@media screen and (max-width:373px) {
+  //  width: 300px !important;
+  //}
 }
 
 .title {

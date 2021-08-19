@@ -25,7 +25,7 @@ export const ConversationCard: FC<ConversationCard> = ({
   return (
     <div className={clsx(whiteBlockStyles.block, styles.card)}>
       <h4 className={styles.title}>{title}</h4>
-      <div className={clsx('d-flex mt-10 justify-space-around', styles.content)}>
+      <div className='d-flex mt-10'>
         <div className={styles.avatars}>
           {
             avatars.map((url, i) => (
@@ -78,5 +78,5 @@ export const ConversationCard: FC<ConversationCard> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

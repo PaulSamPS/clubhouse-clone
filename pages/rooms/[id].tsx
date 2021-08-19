@@ -3,6 +3,7 @@ import { BackButton } from '../../components/BackButton'
 import { Room } from '../../components/Room'
 import Axios from '../../core/axios'
 import Link from 'next/link'
+import { Footer } from '../../components/Footer'
 
 const RoomPage = ({ room }) => {
     return (
@@ -14,6 +15,7 @@ const RoomPage = ({ room }) => {
                 </Link>
                 <Room title={ room.title }/>
             </div>
+            <Footer />
         </>
     )
 }

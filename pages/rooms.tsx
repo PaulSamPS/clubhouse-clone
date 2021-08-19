@@ -4,23 +4,24 @@ import { Button } from '../components/Button'
 import { ConversationCard } from '../components/ConversationCard'
 import Link from 'next/link'
 import Axios from '../core/axios'
+import { Footer } from '../components/Footer'
 
 const RoomsPages = ({ rooms = [] }) => {
     return (
         <>
             <Header />
             <div className='container'>
-                <div className='mt-20 mb-30 d-flex align-items-center justify-content-between media'>
-                    <h1>All conversations</h1>
+                <div className='mt-40 mb-40 d-flex align-items-center justify-content-between media'>
+                    <h1 className='title-size'>All conversations</h1>
                     <Button color='green'>
                         + Start room
                     </Button>
                 </div>
-                <div className='grid'>
+                <div className='cards'>
                     {
                         rooms.map((obj) => (
                             <Link key={ obj.id } href={`/rooms/${obj.id}`} passHref>
-                                <div>
+                                <div className='wrapper-cards'>
                                     <a>
                                         <ConversationCard
                                             title={ obj.title }
@@ -36,6 +37,7 @@ const RoomsPages = ({ rooms = [] }) => {
                     }
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
