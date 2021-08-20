@@ -11,7 +11,7 @@ module.exports = {
       fullname: {
         type: Sequelize.STRING
       },
-      avatarURL: {
+      avatarUrl: {
         type: Sequelize.STRING
       },
       isActive: {
