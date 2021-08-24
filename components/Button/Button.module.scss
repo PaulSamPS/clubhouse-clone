@@ -45,6 +45,15 @@
   }
 }
 
+.buttonRed {
+  background-color: firebrick;
+
+  &:hover,
+  &:active {
+    background-color: darken(firebrick, 2%);
+  }
+}
+
 .buttonGray {
   background-color: #f2f2f2;
   color: white;

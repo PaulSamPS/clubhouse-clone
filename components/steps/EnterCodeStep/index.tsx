@@ -1,9 +1,8 @@
 import React, { ChangeEvent, useState } from 'react'
 import { WhiteBlock } from '../../WhiteBlock'
-import { Button } from '../../Button'
 import { StepInfo } from '../../StepInfo'
 import {useRouter} from "next/router"
-import Axios from '../../../core/axios'
+import { Axios } from '../../../core/axios'
 import clsx from 'clsx'
 
 import styles from './EnterPhoneStep.module.scss'
@@ -12,7 +11,6 @@ export const EnterCodeStep = (event: ChangeEvent<HTMLInputElement>) => {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [codes, setCodes] = useState(['', '', '', ''])
-  const nextDisabled = codes.some((v) => !v)
 
   const handleChangeInput = (event) => {
     const index = Number(event.target.getAttribute('id'))
@@ -24,16 +22,19 @@ export const EnterCodeStep = (event: ChangeEvent<HTMLInputElement>) => {
     })
     if (event.target.nextSibling) {
       (event.target.nextSibling as HTMLInputElement).focus()
+    } else {
+      onSubmit([...codes, value].join(''))
     }
   }
 
-  const onSubmit = async () => {
+  const onSubmit = async (code: string) => {
     try {
       setIsLoading(true)
-      await Axios.get('/todos')
-      await router.push('/profile/1')
-    } catch (error) {
+      await Axios.get(`/auth/sms/activate?code=${ code }`)
+      await router.push('/rooms')
+    } catch (e) {
         alert('Ошибка при активации')
+      setCodes(['', '', '', ''])
     }
     setIsLoading(false)
   }
@@ -44,7 +45,7 @@ export const EnterCodeStep = (event: ChangeEvent<HTMLInputElement>) => {
           ? <>
               <StepInfo icon="/static/numbers.png" title="Enter your activate code" />
               <WhiteBlock className={clsx('m-auto mt-30', styles.whiteBlock)}>
-                <div className={clsx('mb-30', styles.codeInput)}>
+                <div className={ styles.codeInput }>
                   {
                     codes.map((code, index) =>
                       <input
@@ -59,10 +60,6 @@ export const EnterCodeStep = (event: ChangeEvent<HTMLInputElement>) => {
                     )
                   }
                 </div>
-                <Button onClick={ onSubmit } disabled={ nextDisabled }>
-                  Next
-                  <img className="d-ib ml-10" src="/static/arrow.svg" />
-                </Button>
               </WhiteBlock>
           </>
           : <div className="text-center">

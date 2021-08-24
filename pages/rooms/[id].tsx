@@ -1,7 +1,7 @@
 import { Header } from '../../components/Header'
 import { BackButton } from '../../components/BackButton'
 import { Room } from '../../components/Room'
-import Axios from '../../core/axios'
+import { Axios } from '../../core/axios'
 import Link from 'next/link'
 import { Footer } from '../../components/Footer'
 

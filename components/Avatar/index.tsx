@@ -9,6 +9,7 @@ interface AvatarProps {
   height: string
   className?: string
   isVoice?: boolean
+  letters?: string
 }
 
 export const Avatar: FC<AvatarProps> = ({
@@ -16,13 +17,17 @@ export const Avatar: FC<AvatarProps> = ({
   width,
   height,
   className,
-  isVoice
+  isVoice,
+  letters
 }) => {
   return (
     <div
       style={{ width, height, backgroundImage: src ? `url(${src})` : '' }}
-      className={ clsx(styles.avatar, isVoice ? styles.avatarBorder : '', className, 'd-ib') }
+      className={ clsx(styles.avatar, isVoice ? styles.avatarBorder : '', className, 'd-ib', {
+        [styles.emptyAvatar]: !src
+      })}
     >
+      { !src ? letters : null }
     </div>
   )
 }

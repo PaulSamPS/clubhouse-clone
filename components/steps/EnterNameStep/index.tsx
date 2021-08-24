@@ -8,8 +8,8 @@ import clsx from 'clsx'
 import styles from './EnterNameStep.module.scss'
 
 export const EnterNameStep: FC = () => {
-    const [inputValue, setInputValue] = useState<string>('')
-    const { onNextStep } = useContext(MainContext)
+    const { onNextStep, userData, setFieldValue } = useContext(MainContext)
+    const [inputValue, setInputValue] = useState<string>(userData.fullname)
 
     const nextDisabled = !inputValue
 
@@ -18,6 +18,7 @@ export const EnterNameStep: FC = () => {
     }
 
     const onClickNextStep = () => {
+        setFieldValue('fullname', inputValue)
         onNextStep()
     }
 
